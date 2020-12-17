@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+main{
+}
+.wrapper {
+    min-height: 100vh;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*main*/
+main {}
+
+@media only screen and (max-width: 680px) {
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media only screen and (min-width: 680px) and (max-width: 760px) {
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media only screen and (min-width: 760px) and (max-width: 1040px) {
+    .container {
+        width: 100%;
+        max-width: 980px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+@media only screen and (min-width: 1040px) and (max-width: 1280px) {
+    .container {
+        width: 1020px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+@media only screen and (min-width : 1280px) {
+    .container {
+        width: 1200px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+a[data-type="forex"]{
+    color: #30D5C8;
+}
+a[data-type="index"]{
+    color: #0080ff;
+}
+a[data-type="energy"]{
+    color: #FF8C00;
+}
+a[data-type="metal"]{
+    color: #FFD700;
+}
+a[data-type="agriculture"]{
+    color: #A0522D;
+}
+a[data-type="cryptocurrencies"]{
+    color: #FF7118;
+}

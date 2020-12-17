@@ -1,0 +1,52 @@
+@media only screen and (min-width: 760px) {
+
+   
+}
+
+@media only screen and (max-width: 760px) {}
+
+/* NAV */
+.page_nav {
+    margin-top: 30px;
+    padding-bottom: 15px;
+    display: flex;
+    border-bottom: 3px solid black;
+    flex-wrap: wrap;
+}
+
+.page_stockname {
+    display: inline-block;
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 1.25rem;
+    width: 100%;
+}
+
+.page_name {
+    display: block;
+    color: black;
+    font-weight: bold;
+    padding-right: 15px;
+    font-size: 3rem;
+
+}
+.main_text{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.text{
+    text-align: left;
+    font-size: 1.25rem;
+    padding: 5px 0;
+}
+.title{
+    font-size: 1.375rem;
+    font-weight: bold;
+}
+.main_title{
+    width: 100%;
+    font-size: 1rem;
+}
