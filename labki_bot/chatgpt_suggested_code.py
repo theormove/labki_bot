@@ -11,10 +11,9 @@ bot = telebot.TeleBot(token=bot_token)
 import os.path
 
 def find_at(msg):
-	for text in msg:
-		if '@' in text:
-			return text
-
+        for text in msg:
+                if '@' in text:
+                        return text
 
 def user_info(message):
   if not os.path.isfile('{}.txt'.format(message.chat.id)):
@@ -27,7 +26,6 @@ def user_info(message):
       with open('{}.txt'.format(message.chat.id), 'w') as f:
         f.write(data + '@' + str(message.message_id) + '@'+ str(message.date) + ' ' + message.chat.username + ': ' + message.text +'\n')
   return 0
-
 
 def user_info_json(message):
   if not os.path.isfile('{}.json'.format(message.chat.id)):
@@ -52,17 +50,16 @@ def user_info_json(message):
         json.dump(data, f)
   return 0
 
-
 def user_id_identifier(message):
   try:
     if message.chat.username:
       username = message.chat.username
     else:
-      username = 'unknown' 	
+      username = 'unknown'
     if not os.path.isfile('users.txt'):
       with open('users.txt', 'w') as f:
-        f.write(username + '@0')
-      return 0
+        f.write(username + '@1')
+      return 1
     with open('users.txt', 'r') as f:
       data = f.read()
       for user in data.split():
@@ -79,26 +76,19 @@ def user_id_identifier(message):
   except Exception as e:
       raise e
 
-
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
   user_info_json(message)
   #user_info(message)
   bot.reply_to(message, "HIII")
-  user_id = user_id_identifier(message)
-  if user_id == 0:
-      bot.reply_to(message, 'Welcome! You are user number: {}'.format(1)+'\nCheck functionality by pressing here /help')
-  else:
-      bot.reply_to(message, 'Welcome! You are user number: {}'.format(user_id)+'\nCheck functionality by pressing here /help')
-
+  bot.reply_to(message, 'Welcome! You are user number: {}'.format(user_id_identifier(message))+'\nCheck functionality by pressing here /help')
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-	user_info_json(message)
-	bot.reply_to(message,    'To find random error and avarage: /calculate\n'
+        user_info_json(message)
+        bot.reply_to(message,    'To find random error and avarage: /calculate\n'
                              'To approximate and build graphic of a liniar function: /graph\n'
                  'For fun just write instagram username like this: @theormove')
-
 
 @bot.message_handler(commands=['calculate'])
 def send_welcome(message):
@@ -120,7 +110,6 @@ def send_welcome(message):
       bot.reply_to(message,
                    'To find random error and avarage: \nPrint all measurements using coma and space with /calculate or /c in the beginning like this:\n' +
                    '/c 12.4, 913.2, 1231, 8, 1237')
-
 
 @bot.message_handler(commands=['c'])
 def send_welcome(message):
@@ -185,23 +174,20 @@ def send_welcome(message):
   else:
       bot.send_message(message.chat.id, 'lengths of x, y and margin must be equal')
 
-
 @bot.message_handler(func = lambda msg: msg.text and '@' in msg.text)
 def at_answer(message):
-	user_info_json(message)
-	texts = message.text.split()
-	at_text = find_at(texts)
-	bot.reply_to(message, 'https://instagram.com/{}'.format(at_text[1:]))
-
+        user_info_json(message)
+        texts = message.text.split()
+        at_text = find_at(texts)
+        bot.reply_to(message, 'https://instagram.com/{}'.format(at_text[1:]))
 
 @bot.message_handler(func = lambda msg: msg.chat.username )
 def send_his_number(message):
-	#user_info(message)
+        #user_info(message)
     user_info_json(message)
 
-
 while True:
-	try:
-		bot.polling()
-	except Exception:
-		time.sleep(15)
+        try:
+                bot.polling()
+        except Exception:
+                time.sleep(15)
